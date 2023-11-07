@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    min-height: 70vh;
+    max-height: 70vh;
+    background-image: url("./college-newspaper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    min-width: 100vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.heading,
+.subheading {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    color: white;
+    z-index: 9999;
+}
+.subheading {
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 15px;
+    max-width: 400px;
+}
+.search-input-container {
+    display: flex;
+}
+.input-field {
+    z-index: 9999;
+    margin-top: 15px;
+    width: 380px;
+    height: 54px;
+    border-radius: 25px;
+    display: flex;
+    background-color: white;
+    border: none;
+}
+.input-function {
+    flex: 1;
+    display: flex;
+}
+.input-field > input {
+    flex: 1;
+    border: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    outline: none;
+    font-size: 20px;
+}
+.input-function > button {
+    background: none;
+}
+/* .search-input > input {
+    flex: 1;
+    border: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    outline: none;
+    font-size: 20px;
+}
+.search-input > img {
+    width: 25px;
+    padding: 0 10px;
+} */
+.bold {
+    font-weight: bold;
+}
