@@ -2,8 +2,20 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
-
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.loading > h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    margin: 25px 0;
+}
 .header {
     min-height: 70vh;
     max-height: 70vh;
@@ -43,10 +55,12 @@ body {
 }
 .search-input-container {
     display: flex;
+    align-items: center;
+    margin-top: 15px;
+    width: 500px;
 }
 .input-field {
     z-index: 9999;
-    margin-top: 15px;
     width: 380px;
     height: 54px;
     border-radius: 25px;
@@ -54,9 +68,9 @@ body {
     background-color: white;
     border: none;
 }
-.input-function {
-    flex: 1;
-    display: flex;
+.select-input {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
 }
 .input-field > input {
     flex: 1;
@@ -66,21 +80,84 @@ body {
     outline: none;
     font-size: 20px;
 }
-.input-function > button {
-    background: none;
-}
-/* .search-input > input {
-    flex: 1;
-    border: none;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    outline: none;
-    font-size: 20px;
-}
-.search-input > img {
-    width: 25px;
+.input-field > img {
+    width: 30px;
     padding: 0 10px;
-} */
+}
+.search-input-container > button {
+    background: none;
+    z-index: 9999;
+    border: none;
+    cursor: pointer;
+}
+
 .bold {
     font-weight: bold;
+}
+
+/* course detail */
+.course-results {
+    display: flex;
+    flex-direction: column;
+    min-width: 100vw;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.prof-card {
+    border: 2px solid #ddd; /* Mimic fieldset border */
+    padding: 10px;
+    margin-top: 20px; /* Spacing from other content */
+    position: relative; /* For legend positioning */
+    width: 70%;
+    margin-bottom: 20px;
+}
+.custom-legend {
+    position: absolute; /* Positioning like a legend */
+    top: -25px; /* Adjust this value as needed */
+    left: 10px; /* Adjust this value as needed */
+    background: #fff; /* Match the background of the containing block */
+    padding: 0 5px; /* Mimic legend padding */
+    color: #333; /* Legend text color */
+    font-weight: bold; /* Bold like typical legend */
+    display: flex;
+    align-items: center;
+}
+.custom-legend > a {
+    text-decoration: none;
+    color: #2e8bc0;
+    font-size: 36px;
+}
+.prof-name {
+    font-size: 36px;
+}
+
+.courses-container {
+    margin-top: 14px;
+    border: 1px solid black;
+}
+.course-header {
+    background-color: #06315c;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 8px;
+}
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 100%;
+}
+thead {
+    background-color: #d9d9d9;
+    color: black;
+    font-weight: normal;
+    font-size: 14px;
+}
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+table td {
+    border: 1px solid black;
 }
