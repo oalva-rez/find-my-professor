@@ -1,5 +1,5 @@
 import Select, { createFilter } from "react-select";
-import { useState, useEffect, useRef, PropTypes } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PulseLoader } from "react-spinners";
 import ProfCard from "./ProfCard";
 
@@ -12,7 +12,7 @@ function App() {
     const [filteredOptions, setFilteredOptions] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const selectRef = useRef(null);
-
+    const resultsRef = useRef(null);
     // Handle input change
     const handleInputChange = (newValue) => {
         console.log("handleInputChange", newValue);
@@ -170,7 +170,18 @@ function App() {
             }
         })();
     }, []);
-
+    useEffect(() => {
+        console.log(resultsRef.current, filteredOptions);
+        if (resultsRef.current && filteredOptions.length > 0) {
+            console.log("scrolling into view");
+            // Scrolls the `resultsRef` element into view
+            resultsRef.current.scrollIntoView({
+                behavior: "smooth", // Defines the transition animation
+                block: "nearest", // Vertical alignment
+                inline: "start", // Horizontal alignment
+            });
+        }
+    }, [filteredOptions]);
     return (
         <>
             {isLoading ? (
@@ -180,18 +191,14 @@ function App() {
                 </div>
             ) : (
                 <>
-                    <header
-                        style={{ background: "blue", height: "136px" }}
-                    ></header>
-                    <div
-                        id="main-content"
-                        className={
-                            filteredOptions.length > 0
-                                ? "showing-results"
-                                : "no-results"
-                        }
-                    >
-                        <div className="header">
+                    <div id="main-content">
+                        <div
+                            className={
+                                filteredOptions.length > 0
+                                    ? "header showing-results"
+                                    : "header"
+                            }
+                        >
                             <h1 className="heading">Find My Professor</h1>
                             <h2 className="subheading">
                                 Search professor by{" "}
@@ -202,10 +209,6 @@ function App() {
                                 <span className="bold">Section number</span>.
                             </h2>
                             <div className="search-input-container">
-                                {/* <div className="input-field">
-                            <img src="./search.svg" alt="magnifying glass" />
-                            <input type="text" placeholder="Search here..." />
-                        </div> */}
                                 <Select
                                     options={groupedOptions}
                                     onChange={(e) => {
@@ -231,15 +234,13 @@ function App() {
                                     })}
                                     required={true}
                                 />
-                                <button>
-                                    <img src="./button-search.svg" alt="" />
-                                </button>
                             </div>
                         </div>
                     </div>
-                    <div className="course-results">
-                        {filteredOptions.length > 0 &&
-                            filteredOptions.map((prof) => {
+
+                    {filteredOptions.length > 0 && (
+                        <div className="course-results" ref={resultsRef}>
+                            {filteredOptions.map((prof) => {
                                 return (
                                     <ProfCard
                                         key={prof.professorName}
@@ -247,7 +248,8 @@ function App() {
                                     />
                                 );
                             })}
-                    </div>
+                        </div>
+                    )}
                 </>
             )}
         </>

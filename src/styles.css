@@ -17,8 +17,8 @@ body {
     margin: 25px 0;
 }
 .header {
-    min-height: 70vh;
-    max-height: 70vh;
+    min-height: 100vh;
+
     background-image: url("./college-newspaper.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -36,8 +36,11 @@ body {
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 70vh;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
+}
+.header.showing-results {
+    min-height: 30vh;
 }
 .heading,
 .subheading {
@@ -123,6 +126,7 @@ body {
     font-weight: bold; /* Bold like typical legend */
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 .custom-legend > a {
     text-decoration: none;
@@ -142,7 +146,13 @@ body {
     color: white;
     font-size: 20px;
     font-weight: bold;
-    padding-left: 8px;
+    padding: 12px 8px;
+}
+.day {
+    background-color: #06315c;
+    color: white;
+    padding: 5px;
+    margin: 0 2px;
 }
 table {
     border-collapse: collapse;
@@ -155,9 +165,22 @@ thead {
     font-weight: normal;
     font-size: 14px;
 }
+thead th {
+    border: 1px solid black;
+    padding: 4px 8px;
+    font-weight: 400;
+    text-align: left;
+}
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 table td {
     border: 1px solid black;
+    padding: 12px 8px;
+}
+tr {
+    display: flex;
+}
+tr > * {
+    flex: 1;
 }
